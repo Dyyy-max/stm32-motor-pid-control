@@ -11,9 +11,9 @@
 - 版本管理：Git / GitHub
 
 ## 硬件说明
-1. 主控：STM32F103C8T6开发板
-2. 驱动：L298N/L293D 直流电机驱动模块
-3. 外设：独立按键、板载LED
+本项目**无需实体硬件**，全程基于 Keil MDK 软件仿真运行。
+仿真目标芯片：STM32F103C8T6
+可仿真外设：GPIO、TIM(PWM)、USART 串口，完整验证代码逻辑与算法效果。
 
 ## 功能列表
 1. 按键控制电机启停，LED同步状态指示
@@ -21,11 +21,12 @@
 3. 增量式PID算法实现转速闭环稳速
 4. USART1(9600波特率)串口打印转速、PWM、PID参数
 
-## 编译&运行
-1. 使用STM32CubeMX重新生成工程（可选）
-2. Keil MDK5 打开 motor-pid-control/Motor_PID_Control.uvprojx 编译
-3. 下载至开发板或开启软件仿真运行
-4. 串口助手波特率设置为 9600，查看运行日志
+## 编译&运行步骤
+1. 使用 STM32CubeMX 重新生成工程（可选，直接用现有工程也可）
+2. Keil MDK5 打开 `motor-pid-control/Motor_PID_Control.uvprojx` 编译
+3. 开启软件仿真模式运行程序
+4. 串口助手/Keil内置串口窗口设置 9600 波特率，查看运行日志
+5. 可通过Keil寄存器、逻辑分析仪观察引脚电平与PWM波形
 
 ## 目录结构
 arm-bsp-learing/
