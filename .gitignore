@@ -1,40 +1,28 @@
-# Prerequisites
-*.d
-
+# ==================== Keil MDK 编译产物 ====================
 # Object files
 *.o
-*.ko
 *.obj
+*.d
+*.crf
+*.axf
 *.elf
 
 # Linker output
-*.ilk
 *.map
-*.exp
+*.lnp
+*.htm
+*.build_log.htm
+*.dep
 
-# Precompiled Headers
-*.gch
-*.pch
+# Executables
+*.hex
+*.bin
+*.out
+*.app
 
 # Libraries
 *.lib
 *.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
 
 # Debug files
 *.dSYM/
@@ -42,14 +30,48 @@
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# ==================== Keil 工程临时文件 ====================
+# User-specific files (包含本地路径，不应上传)
+*.uvguix
+*.uvguix.*
+*.uvopt
+*.uvoptx.bak
 
-# debug information files
-*.dwo
+# Build directories
+Objects/
+Listings/
+DebugConfig/
+RTE/
+
+# Keil backup files
+*.bak
+*~
+
+# ==================== STM32CubeMX 生成的文件 ====================
+.mxproject
+
+# ==================== 操作系统生成文件 ====================
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==================== IDE 和编辑器 ====================
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# ==================== 其他 ====================
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
