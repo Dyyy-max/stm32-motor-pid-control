@@ -79,6 +79,8 @@ stm32-motor-pid-control/
 ├── pid.c               # PID算法实现
 ├── pid.h               # PID头文件
 ├── startup_sim.s       # 仿真版启动文件
+├── PID_Sim/            # Keil仿真工程文件（独立仿真项目）
+├── Core/               # STM32CubeMX生成的核心代码
 ├── .gitignore          # Git忽略配置
 └── README.md           # 项目说明
 ```

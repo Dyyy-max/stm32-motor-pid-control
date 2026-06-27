@@ -30,8 +30,7 @@ PID_HandleTypeDef motor_pid;      // 电机PID控制结构体
 uint8_t motor_run = 0;            // 电机运行标志位（0:停止, 1:运行）
 uint16_t pwm_duty = 500;          // PWM占空比初值（0-999）
 
-void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle);
-void HAL_UART_MspInit(UART_HandleTypeDef* huartHandle);
+
 
 /**
  * @brief 重定向printf到USART1
@@ -167,43 +166,8 @@ static void MX_GPIO_Init(void) {
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
-/**
- * @brief TIM2底层初始化回调
- * @details 使能TIM2时钟和GPIOA时钟，配置PA0为复用推挽输出
- */
-void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle) {
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-    if(tim_baseHandle->Instance==TIM2) {
-        __HAL_RCC_TIM2_CLK_ENABLE();
-        __HAL_RCC_GPIOA_CLK_ENABLE();
-        GPIO_InitStruct.Pin = GPIO_PIN_0;
-        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-    }
-}
 
-/**
- * @brief USART1底层初始化回调
- * @details 使能USART1时钟和GPIOA时钟
- * - PA9: USART1_TX（复用推挽输出）
- * - PA10: USART1_RX（浮空输入）
- */
-void HAL_UART_MspInit(UART_HandleTypeDef* huartHandle) {
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-    if(huartHandle->Instance==USART1) {
-        __HAL_RCC_USART1_CLK_ENABLE();
-        __HAL_RCC_GPIOA_CLK_ENABLE();
-        GPIO_InitStruct.Pin = GPIO_PIN_9;
-        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-        GPIO_InitStruct.Pin = GPIO_PIN_10;
-        GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-    }
-}
+
 
 /**
  * @brief 电机启动

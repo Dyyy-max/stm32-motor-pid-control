@@ -35,6 +35,7 @@
 *.uvguix
 *.uvguix.*
 *.uvopt
+*.uvoptx
 *.uvoptx.bak
 
 # Build directories
@@ -68,6 +69,16 @@ $RECYCLE.BIN/
 # JetBrains IDEs
 .idea/
 
+# ==================== 完整工程结构过滤 ====================
+# STM32 HAL 库（体积大，不建议上传）
+Drivers/
+
+# IAR 工程文件
+EWARM/
+
+# 编译临时目录
+Start/
+
 # ==================== 其他 ====================
 # Log files
 *.log
@@ -75,3 +86,6 @@ $RECYCLE.BIN/
 # Temporary files
 *.tmp
 *.temp
+
+# Listing files
+*.lst

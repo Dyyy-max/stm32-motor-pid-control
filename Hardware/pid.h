@@ -40,13 +40,3 @@ void PID_Init(volatile PID_HandleTypeDef *pid, float kp, float ki, float kd, flo
 float PID_Calc(volatile PID_HandleTypeDef *pid, float feed_val);
 
 #endif
-
-
-
-
-
-
-
-
-
-
