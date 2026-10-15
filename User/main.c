@@ -11,6 +11,8 @@
  * - 增量式PID算法实现电机速度闭环控制
  *
  * 硬件连接：
+ * 
+ * 
  * - PA0: 按键输入（KEY1，上拉）
  * - PA1: TIM2_CH2 PWM输出（电机PWM控制）
  * - PA6: TIM3_CH1 输入捕获（脉冲测量；测试时可用跳线与PA1短接做信号回环自测）
@@ -32,7 +34,7 @@ TIM_HandleTypeDef htim2;          // TIM2句柄（PWM输出）
 TIM_HandleTypeDef htim3;          // TIM3句柄（输入捕获测频）
 PID_HandleTypeDef motor_pid;      // 电机PID控制结构体
 uint8_t motor_run = 0;            // 电机运行标志位（0:停止, 1:运行）
-uint16_t pwm_duty = 500;          // PWM占空比初值（0-999）
+uint16_t pwm_duty = 0;            // PWM占空比初值0（上电无输出，启动后由PID接管）
 
 /* ===== 输入捕获测量结果（中断中更新，主循环读取） =====
  * 原理：TIM3计数时钟1MHz（1个计数=1us），每个上升沿锁存一次计数值，

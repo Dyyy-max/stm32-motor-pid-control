@@ -35,9 +35,9 @@ int main(void)
         cycle++;
 
         sim_actual += motor_pid.output * 0.01f;
-        
+
         if (sim_actual > 120.0f)
-            sim_actual = 0.0f;
+            sim_actual = 120.0f;  /* 到上限钳位（模拟电机物理极限），不能清零——清零会使曲线变锯齿波、积分项失真 */
 
         PID_Calc(&motor_pid, sim_actual);
 
